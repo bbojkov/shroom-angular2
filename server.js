@@ -19,6 +19,13 @@ app.use(function (req, res, next) {
   next();
 });
 
+app
+  .get('/', function (req, res) {
+    res
+      .status(200)
+      .sendFile(path.join(__dirname, '/../../dist/index.html'));
+  });
+
 // get our request parameters
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -78,6 +85,8 @@ apiRoutes.post('/posts', postsController.create);
 
 // connect the api routes under /api/*
 app.use('/api', apiRoutes);
+
+
 
 // Start the server
 app.listen(port);
