@@ -50,6 +50,14 @@ require('./server/config/passport')(passport);
 // bundle our routes
 var apiRoutes = express.Router();
 
+
+app
+  .get('/', function (req, res) {
+    res
+      .status(200)
+      .sendFile(path.join(__dirname, '/../../dist/index.html'));
+  });
+
 let usersController = require('./server/controllers/UsersController');
 let postsController = require('./server/controllers/posts-controller');
 
@@ -81,12 +89,6 @@ apiRoutes.post('/posts', postsController.create);
 // connect the api routes under /api/*
 app.use('/api', apiRoutes);
 
-app
-  .get('/', function (req, res) {
-    res
-      .status(200)
-      .sendFile(path.join(__dirname, '/../../dist/index.html'));
-  });
 
 // Start the server
 app.listen(port);
