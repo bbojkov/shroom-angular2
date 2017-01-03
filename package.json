@@ -3,17 +3,13 @@
   "version": "0.0.0",
   "license": "MIT",
   "angular-cli": {},
-  "main": "server.js",
   "scripts": {
-    "start": "concurrently --kill-others \"ng serve --proxy-config proxy.conf.json\" \"npm run _server:run\"",
+    "ng": "ng",
+    "start": "concurrently \"node server.js\" \"ng server\"",
     "lint": "tslint \"src/**/*.ts\"",
-    "test": "ng test --watch=false",
+    "test": "ng test",
     "pree2e": "webdriver-manager update",
-    "e2e": "protractor",
-    "build": "ng build --prod --output-path=dist/client && npm run _server:build",
-    "_server:run": "tsc -p ./server && concurrently \"tsc -w -p ./server\" \"nodemon dist/server/bin/www.js\" ",
-    "_server:build": "tsc -p ./server",
-    "postinstall": "npm run build"
+    "e2e": "protractor"
   },
   "private": true,
   "dependencies": {
