@@ -5,7 +5,8 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
-    "start": "concurrently \"node server.js\" \"ng server\"",
+    "start": "./node_modules/.bin/tsc && node server.js",
+    "server": "node server.js",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
