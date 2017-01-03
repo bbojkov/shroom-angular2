@@ -31,6 +31,13 @@ app.use(morgan('dev'));
 // Use the passport package in our application
 app.use(passport.initialize());
 
+app
+  .get('/', function (req, res) {
+    res
+      .status(200)
+      .sendFile(path.join(__dirname, './dist/index.html'));
+  });
+
 // demo Route (GET http://localhost:3000)
 app.get('/', function (req, res) {
   res.send('Hello! The API is at http://localhost:' + port + '/api');
@@ -51,12 +58,7 @@ require('./server/config/passport')(passport);
 var apiRoutes = express.Router();
 
 
-app
-  .get('/', function (req, res) {
-    res
-      .status(200)
-      .sendFile(path.join(__dirname, './dist/index.html'));
-  });
+
 
 let usersController = require('./server/controllers/UsersController');
 let postsController = require('./server/controllers/posts-controller');
